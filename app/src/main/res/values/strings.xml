@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Food Cart Tracker</string>
+
+    <string-array name="quadrants_array">
+        <item>Southwest PDX</item>
+        <item>Southeast PDX</item>
+        <item>Northwest PDX</item>
+        <item>Northeast PDX</item>
+    </string-array>
+
 </resources>
