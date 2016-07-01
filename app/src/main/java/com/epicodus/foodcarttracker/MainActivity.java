@@ -16,10 +16,11 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     @Bind(R.id.showCartsButton) Button mShowCartsButton;
     @Bind(R.id.quadSelectSpinner) Spinner mQuadSelectSpinner;
+    @Bind(R.id.signInButton) Button mSignInButton;
 
     private String mSelection;
 
@@ -48,14 +49,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mQuadSelectSpinner.setAdapter(adapter);
         mQuadSelectSpinner.setOnItemSelectedListener(this);
 
-        mShowCartsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              Intent intent = new Intent(MainActivity.this, MyCarts.class);
-              intent.putExtra("selection", mSelection);
-              startActivity(intent);
-            }
-        });
+        mShowCartsButton.setOnClickListener(this);
+        mSignInButton.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View view) {
+        if (view == mShowCartsButton) {
+            Intent intent = new Intent(MainActivity.this, MyCarts.class);
+            intent.putExtra("selection", mSelection);
+            startActivity(intent);
+        }
+        if (view == mSignInButton) {
+            Intent intent = new Intent(MainActivity.this, SignIn.class);
+            startActivity(intent);
+        }
+
     }
 }
 

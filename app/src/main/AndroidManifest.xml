@@ -15,7 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyCarts"></activity>
+        <activity android:name=".MyCarts">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.foodcarttracker.MainActivity"></meta-data>
+        </activity>
+        <activity android:name=".SignIn">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.foodcarttracker.MainActivity"></meta-data>
+        </activity>
     </application>
 
 </manifest>
