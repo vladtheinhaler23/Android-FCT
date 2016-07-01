@@ -19,36 +19,18 @@ Food Cart Tracker
 
 ![QR-Code iOS](http://url/qrcode-appname-ios.png)
 
-## Tests
-#### Works on
-* Devices it works with
-
-#### Does not work on
-* Devices it doesn't work with
 
 ## Contributors
-*Joshua Logan
+* Joshua Logan
 
 ### Artwork
 * Any credit to artists(music,images,...)
 
-### Contributors on GitHub
-* [Contributors](https://github.com/vladtheinhaler23/Android-FCT/graphs/contributors)
-
-### Translations
-* [Transifex](https://www.transifex.com/projects/p/appname/)
-
 ### Third party libraries
 * see [LIBRARIES](https://github.com/username/appname/blob/master/LIBRARIES.md) files
 
-## Permissions
-* Any permissions needed by the app
-
-## License 
-* see [LICENSE](https://github.com/username/appname/blob/master/LICENSE.md) file
-
 ## Version 
-* Version X.Y
+* Version 1.0
 
 ## How-to use this code
 ```
@@ -61,4 +43,4 @@ Run on Emulator
 #### Developer
 * e-mail: joshlogan32323@gmail.com
 * Twitter: [@vlad23RL](https://twitter.com/Vlad23RL "@vlad23RL on twitter")
-* Linkedin: (www.linkedin.com/in/joshlogan23)
+* Linkedin: www.linkedin.com/in/joshlogan23
