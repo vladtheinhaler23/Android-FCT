@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-FCT.iml" filepath="$PROJECT_DIR$/Android-FCT.iml" />
       <module fileurl="file://$PROJECT_DIR$/FoodCartTracker.iml" filepath="$PROJECT_DIR$/FoodCartTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
