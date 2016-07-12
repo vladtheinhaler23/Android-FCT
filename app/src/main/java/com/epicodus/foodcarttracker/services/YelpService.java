@@ -1,4 +1,7 @@
-package com.epicodus.foodcarttracker;
+package com.epicodus.foodcarttracker.services;
+
+import com.epicodus.foodcarttracker.Constants;
+import com.epicodus.foodcarttracker.models.Cart;
 
 import org.json.JSONArray;
 import org.json.JSONException;

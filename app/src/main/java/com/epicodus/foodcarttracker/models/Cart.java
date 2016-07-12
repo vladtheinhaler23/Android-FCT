@@ -1,4 +1,4 @@
-package com.epicodus.foodcarttracker;
+package com.epicodus.foodcarttracker.models;
 
 import java.util.ArrayList;
 
