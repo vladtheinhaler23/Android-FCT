@@ -1,20 +1,25 @@
 package com.epicodus.foodcarttracker.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by Joshua on 7/12/16.
  */
+@Parcel
 public class Cart {
-    private String mName;
-    private String mPhone;
-    private String mWebsite;
-    private double mRating;
-    private String mImageUrl;
-    private ArrayList<String> mAddress = new ArrayList<>();
-    private double mLatitude;
-    private double mLongitude;
-    private ArrayList<String> mCategories = new ArrayList<>();
+    String mName;
+    String mPhone;
+    String mWebsite;
+    double mRating;
+    String mImageUrl;
+    ArrayList<String> mAddress = new ArrayList<>();
+    double mLatitude;
+    double mLongitude;
+    ArrayList<String> mCategories = new ArrayList<>();
+
+    public Cart() {}
 
     public Cart(String name, String phone, String website,
                       double rating, String imageUrl, ArrayList<String> address,
@@ -28,7 +33,9 @@ public class Cart {
         this.mLatitude = latitude;
         this.mLongitude = longitude;
         this.mCategories = categories;
+        mImageUrl = getLargeImageUrl(imageUrl);
     }
+
 
     public String getName() {
         return mName;
@@ -64,5 +71,10 @@ public class Cart {
 
     public ArrayList<String> getCategories() {
         return mCategories;
+    }
+
+    public String getLargeImageUrl(String imageUrl) {
+        String largeImageUrl = imageUrl.substring(0, imageUrl.length() - 6).concat("o.jpg");
+        return largeImageUrl;
     }
 }
