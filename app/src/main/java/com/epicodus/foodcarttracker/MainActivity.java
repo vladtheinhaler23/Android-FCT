@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onClick(View view) {
         if (view == mShowCartsButton) {
-            Intent intent = new Intent(MainActivity.this, MyCarts.class);
+            Intent intent = new Intent(MainActivity.this, CartsActivity.class);
             intent.putExtra("selection", mSelection);
             startActivity(intent);
         }
