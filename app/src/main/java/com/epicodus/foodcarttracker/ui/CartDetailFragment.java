@@ -1,6 +1,8 @@
 package com.epicodus.foodcarttracker.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartDetailFragment extends Fragment {
+public class CartDetailFragment extends Fragment implements View.OnClickListener {
 
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
@@ -57,6 +59,10 @@ public class CartDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart_detail, container, false);
         ButterKnife.bind(this, view);
 
+        mWebsiteLabel.setOnClickListener(this);
+        mPhoneLabel.setOnClickListener(this);
+        mAddressLabel.setOnClickListener(this);
+
         Picasso.with(view.getContext())
                 .load(mCart.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
@@ -70,6 +76,26 @@ public class CartDetailFragment extends Fragment {
         mAddressLabel.setText(android.text.TextUtils.join(", ", mCart.getAddress()));
 
         return view;
+    }
+    @Override
+    public void onClick(View v) {
+        if (v == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mCart.getWebsite()));
+            startActivity(webIntent);
+        }
+        if (v == mPhoneLabel) {
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:" + mCart.getPhone()));
+            startActivity(phoneIntent);
+        }
+        if (v == mAddressLabel) {
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:" + mCart.getLatitude()
+                            + "," + mCart.getLongitude()
+                            + "?q=(" + mCart.getName() + ")"));
+            startActivity(mapIntent);
+        }
     }
 
 

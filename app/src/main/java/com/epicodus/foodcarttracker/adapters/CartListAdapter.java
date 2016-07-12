@@ -25,6 +25,10 @@ import butterknife.ButterKnife;
  * Created by Joshua on 7/12/16.
  */
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartViewHolder> {
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
     private ArrayList<Cart> mCarts = new ArrayList<>();
     private Context mContext;
 
@@ -66,7 +70,13 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartVi
 
 
         public void bindCart(Cart cart) {
-            Picasso.with(mContext).load(cart.getImageUrl()).into(mCartImageView);
+
+            Picasso.with(mContext)
+                    .load(cart.getImageUrl())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mCartImageView);
+
             mNameTextView.setText(cart.getName());
             mCategoryTextView.setText(cart.getCategories().get(0));
             mRatingTextView.setText("Rating: " + cart.getRating() + "/5");
