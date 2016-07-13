@@ -1,12 +1,16 @@
 package com.epicodus.foodcarttracker.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.epicodus.foodcarttracker.Constants;
 import com.epicodus.foodcarttracker.R;
 import com.epicodus.foodcarttracker.adapters.CartListAdapter;
 import com.epicodus.foodcarttracker.services.YelpService;
@@ -25,11 +29,13 @@ public class CartListActivity extends AppCompatActivity {
 
     public static final String TAG = CartListActivity.class.getSimpleName();
 
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+    private CartListAdapter mAdapter;
+    public ArrayList<Cart> mCarts = new ArrayList<>();
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private CartListAdapter mAdapter;
 
-    public ArrayList<Cart> mCarts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +46,15 @@ public class CartListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String selection = intent.getStringExtra("selection");
 
-        getCarts(selection);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Pref Location", mRecentAddress);
 
-        Toast.makeText(CartListActivity.this, selection, Toast.LENGTH_LONG).show();
+        if (mRecentAddress != null) {
+            getCarts(mRecentAddress);
+        }
+
+        getCarts(selection);
     }
 
     private void getCarts(String location) {
