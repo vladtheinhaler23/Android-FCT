@@ -24,13 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
-    private DatabaseReference mSearchedLocationReference;
-    private ValueEventListener mSearchedLocationReferenceListener;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Bind(R.id.showCartsButton) Button mShowCartsButton;
     @Bind(R.id.quadSelectSpinner) Spinner mQuadSelectSpinner;
@@ -47,37 +41,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSearchedLocationReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
-
-        mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
-                    String location = locationSnapshot.getValue().toString();
-                    Log.d("Locations updated", "location: " + location);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.quadrants_array, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mQuadSelectSpinner.setAdapter(adapter);
-        mQuadSelectSpinner.setOnItemSelectedListener(this);
 
         mShowCartsButton.setOnClickListener(this);
         mSignInButton.setOnClickListener(this);
@@ -85,30 +54,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        String selection = (String) parent.getItemAtPosition(pos);
-        mSelection = selection;
-
-    }
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
-    @Override
     public void onClick(View view) {
         if (view == mShowCartsButton) {
             String location = mSelection;
-            saveLocationToFirebase(location);
 
-//       if(!(location).equals("")) {
-//          addToSharedPreferences(location);
-//       }
             Intent intent = new Intent(MainActivity.this, CartListActivity.class);
             intent.putExtra("selection", mSelection);
             startActivity(intent);
@@ -123,12 +72,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
     }
-    public void saveLocationToFirebase(String location) {
-        mSearchedLocationReference.push().setValue(location);
-    }
-
-//    private void addToSharedPreferences(String location) {
-//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
-//    }
 }
 
