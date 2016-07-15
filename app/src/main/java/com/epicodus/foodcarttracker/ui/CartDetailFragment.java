@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.foodcarttracker.Constants;
 import com.epicodus.foodcarttracker.R;
 import com.epicodus.foodcarttracker.models.Cart;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -63,6 +67,8 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
 
+        mSaveCartButton.setOnClickListener(this);
+
         Picasso.with(view.getContext())
                 .load(mCart.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
@@ -77,8 +83,18 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
 
         return view;
     }
+
+
+
     @Override
     public void onClick(View v) {
+        if (v == mSaveCartButton) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CARTS);
+            restaurantRef.push().setValue(mCart);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
         if (v == mWebsiteLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mCart.getWebsite()));

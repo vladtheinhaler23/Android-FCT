@@ -46,13 +46,13 @@ public class CartListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String selection = intent.getStringExtra("selection");
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("Shared Pref Location", mRecentAddress);
-
-        if (mRecentAddress != null) {
-            getCarts(mRecentAddress);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        Log.d("Shared Pref Location", mRecentAddress);
+//
+//        if (mRecentAddress != null) {
+//            getCarts(mRecentAddress);
+//        }
 
         getCarts(selection);
     }
