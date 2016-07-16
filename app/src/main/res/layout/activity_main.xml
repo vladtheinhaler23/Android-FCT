@@ -26,29 +26,17 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In/Sign Up"
-        android:id="@+id/signInButton"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My Saved Carts"
-        android:layout_above="@id/signInButton"
         android:id="@+id/savedCartsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"/>
 
     <Button

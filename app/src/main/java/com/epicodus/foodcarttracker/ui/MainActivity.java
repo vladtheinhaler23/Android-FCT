@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Bind(R.id.showCartsButton) Button mShowCartsButton;
     @Bind(R.id.quadSelectSpinner) Spinner mQuadSelectSpinner;
-    @Bind(R.id.signInButton) Button mSignInButton;
     @Bind(R.id.savedCartsButton) Button mSavedCartsButton;
 
     private String mSelection;
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuadSelectSpinner.setAdapter(adapter);
 
         mShowCartsButton.setOnClickListener(this);
-        mSignInButton.setOnClickListener(this);
         mSavedCartsButton.setOnClickListener(this);
     }
 
@@ -81,10 +79,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Intent intent = new Intent(MainActivity.this, CartListActivity.class);
             intent.putExtra("selection", mSelection);
-            startActivity(intent);
-        }
-        if (view == mSignInButton) {
-            Intent intent = new Intent(MainActivity.this, SignIn.class);
             startActivity(intent);
         }
         if (view == mSavedCartsButton) {
