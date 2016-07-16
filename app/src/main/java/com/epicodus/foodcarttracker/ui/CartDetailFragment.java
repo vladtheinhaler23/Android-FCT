@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.epicodus.foodcarttracker.Constants;
 import com.epicodus.foodcarttracker.R;
 import com.epicodus.foodcarttracker.models.Cart;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -89,10 +91,19 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mSaveCartButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference restaurantRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CARTS);
-            restaurantRef.push().setValue(mCart);
+                    .getReference(Constants.FIREBASE_CHILD_CARTS)
+                    .child(uid);
+
+            DatabaseReference pushRef = restaurantRef.push();
+            String pushId = pushRef.getKey();
+            mCart.setPushId(pushId);
+            pushRef.setValue(mCart);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
         if (v == mWebsiteLabel) {
