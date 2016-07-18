@@ -44,7 +44,7 @@ public class SavedCartListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Cart, FirebaseCartViewHolder>
-                (Cart.class, R.layout.cart_list_item, FirebaseCartViewHolder.class,
+                (Cart.class, R.layout.cart_list_item_drag, FirebaseCartViewHolder.class,
                         mCartReference) {
 
             @Override
