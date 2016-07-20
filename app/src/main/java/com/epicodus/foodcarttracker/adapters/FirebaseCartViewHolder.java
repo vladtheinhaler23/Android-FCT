@@ -45,6 +45,7 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
         TextView nameTextView = (TextView) mView.findViewById(R.id.cartNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
+        TextView notesTextView = (TextView) mView.findViewById(R.id.notesTextView);
 
         Picasso.with(mContext)
                 .load(cart.getImageUrl())
@@ -55,6 +56,8 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
         nameTextView.setText(cart.getName());
         categoryTextView.setText(cart.getCategories().get(0));
         ratingTextView.setText("Rating: " + cart.getRating() + "/5");
+        notesTextView.setText(cart.getNotes());
+
     }
 
     @Override

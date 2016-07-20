@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.phoneTextView) TextView mPhoneLabel;
     @Bind(R.id.addressTextView) TextView mAddressLabel;
     @Bind(R.id.saveCartButton) TextView mSaveCartButton;
+    @Bind(R.id.cartNotesEditText) EditText mNotesEditText;
 
     private Cart mCart;
 
@@ -69,6 +72,7 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
 
+
         mSaveCartButton.setOnClickListener(this);
 
         Picasso.with(view.getContext())
@@ -93,6 +97,8 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
         if (v == mSaveCartButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
+            String userNotes = mNotesEditText.getText().toString();
+
 
             DatabaseReference restaurantRef = FirebaseDatabase
                     .getInstance()
@@ -102,6 +108,8 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
             DatabaseReference pushRef = restaurantRef.push();
             String pushId = pushRef.getKey();
             mCart.setPushId(pushId);
+            mCart.setNotes(userNotes);
+
             pushRef.setValue(mCart);
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();

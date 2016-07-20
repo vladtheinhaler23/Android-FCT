@@ -20,6 +20,7 @@ public class Cart {
     double longitude;
     List<String> categories = new ArrayList<>();
     private String pushId;
+    String notes;
 
     public Cart() {}
 
@@ -86,5 +87,13 @@ public class Cart {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
