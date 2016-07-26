@@ -9,7 +9,9 @@
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/chowster.png"/>
+        android:src="@drawable/chowster"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
 
     <Button

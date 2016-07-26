@@ -60,7 +60,7 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
 
         nameTextView.setText(cart.getName());
         categoryTextView.setText(cart.getCategories().get(0));
-        ratingTextView.setText(R.string.rating_label_string + "" + cart.getRating() + R.string.rating_scale_string);
+        ratingTextView.setText(mContext.getResources().getString(R.string.rating_label_string) + Double.toString(cart.getRating()) + mContext.getResources().getString(R.string.rating_scale_string));
 
     }
 
@@ -79,8 +79,8 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
                 int itemPosition = getLayoutPosition();
 
                 Intent intent = new Intent(mContext, CartDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("carts", Parcels.wrap(carts));
+                intent.putExtra(Constants.INTENT_POSITION, itemPosition + "");
+                intent.putExtra(Constants.INTENT_CARTS, Parcels.wrap(carts));
 
                 mContext.startActivity(intent);
             }

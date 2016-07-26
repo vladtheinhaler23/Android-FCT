@@ -109,7 +109,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartVi
 
             mNameTextView.setText(cart.getName());
             mCategoryTextView.setText(cart.getCategories().get(0));
-            mRatingTextView.setText(R.string.rating_label_string + "" + cart.getRating() + R.string.rating_scale_string);
+            mRatingTextView.setText(mContext.getResources().getString(R.string.rating_label_string) + Double.toString(cart.getRating()) + mContext.getResources().getString(R.string.rating_scale_string));
         }
 
         @Override

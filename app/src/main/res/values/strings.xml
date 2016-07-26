@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Food Cart Tracker</string>
+    <string name="app_name">Chowster</string>
 
 
     <string name="saved_carts_string">"Saved Carts"</string>

@@ -67,6 +67,9 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.notesTextViewLabel)TextView mNotesTextViewLabel;
 
     private Cart mCart;
+    private Context mContext;
+
+
 
     public static CartDetailFragment newInstance(ArrayList<Cart> carts, Integer position, String source) {
         CartDetailFragment cartDetailFragment = new CartDetailFragment();
@@ -95,6 +98,8 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_cart_detail, container, false);
         ButterKnife.bind(this, view);
 
+        mContext = getActivity();
+
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
@@ -110,7 +115,7 @@ public class CartDetailFragment extends Fragment implements View.OnClickListener
 
         mNameLabel.setText(mCart.getName());
         mCategoriesLabel.setText(android.text.TextUtils.join(", ", mCart.getCategories()));
-        mRatingLabel.setText(Double.toString(mCart.getRating()) + R.string.rating_scale_string);
+        mRatingLabel.setText(Double.toString(mCart.getRating()) + mContext.getResources().getString(R.string.rating_scale_string));
         mPhoneLabel.setText(mCart.getPhone());
         mAddressLabel.setText(android.text.TextUtils.join(", ", mCart.getAddress()));
         mNotesTextView.setText(mCart.getNotes());

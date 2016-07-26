@@ -20,4 +20,6 @@ public class Constants {
     public static final String SOURCE_SAVED = "saved";
     public static final String SOURCE_FIND = "find";
     public static final String INTENT_SELECTION = "selection";
+    public static final String INTENT_POSITION = "position";
+    public static final String INTENT_CARTS = "carts";
 }
