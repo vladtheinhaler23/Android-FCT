@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.epicodus.foodcarttracker.Constants;
@@ -33,7 +34,6 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Bind(R.id.showCartsButton) Button mShowCartsButton;
-    @Bind(R.id.quadSelectSpinner) Spinner mQuadSelectSpinner;
     @Bind(R.id.savedCartsButton) Button mSavedCartsButton;
 
     private String mSelection;
@@ -54,19 +54,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                    getSupportActionBar().setTitle(user.getDisplayName());
                 } else {
 
                 }
             }
         };
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.quadrants_array, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        mQuadSelectSpinner.setAdapter(adapter);
 
         mShowCartsButton.setOnClickListener(this);
         mSavedCartsButton.setOnClickListener(this);
@@ -78,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String location = mSelection;
 
             Intent intent = new Intent(MainActivity.this, CartListActivity.class);
-            intent.putExtra("selection", mSelection);
+            intent.putExtra(Constants.INTENT_SELECTION, mSelection);
             startActivity(intent);
         }
         if (view == mSavedCartsButton) {

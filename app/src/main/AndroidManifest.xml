@@ -18,9 +18,17 @@
                 android:value=".ui.MainActivity" />
         </activity>
 
-        <activity android:name=".ui.CartDetailActivity" />
+        <activity android:name=".ui.CartDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.CartListActivity" />
+        </activity>
 
-        <activity android:name=".ui.SavedCartListActivity" />
+        <activity android:name=".ui.SavedCartListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+            </activity>
 
         <activity android:name=".ui.CreateAccountActivity" />
 

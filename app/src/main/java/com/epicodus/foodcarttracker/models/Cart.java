@@ -21,6 +21,7 @@ public class Cart {
     List<String> categories = new ArrayList<>();
     private String pushId;
     String notes;
+    String index;
 
     public Cart() {}
 
@@ -37,6 +38,7 @@ public class Cart {
         this.longitude = longitude;
         this.categories = categories;
         this.imageUrl = getLargeImageUrl(imageUrl);
+        this.index = "not_specified";
     }
 
 
@@ -95,5 +97,13 @@ public class Cart {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

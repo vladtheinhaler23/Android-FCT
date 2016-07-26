@@ -1,8 +1,11 @@
 package com.epicodus.foodcarttracker.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import com.epicodus.foodcarttracker.Constants;
 import com.epicodus.foodcarttracker.R;
 import com.epicodus.foodcarttracker.models.Cart;
 import com.epicodus.foodcarttracker.ui.CartDetailActivity;
+import com.epicodus.foodcarttracker.util.ItemTouchHelperViewHolder;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,10 +29,12 @@ import java.util.ArrayList;
 /**
  * Created by Joshua on 7/14/16.
  */
-public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder {
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
+
+    public ImageView mCartImageView;
 
     View mView;
     Context mContext;
@@ -37,26 +43,24 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindCart(Cart cart) {
-        ImageView cartImageView = (ImageView) mView.findViewById(R.id.cartImageView);
+
         TextView nameTextView = (TextView) mView.findViewById(R.id.cartNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
-        TextView notesTextView = (TextView) mView.findViewById(R.id.notesTextView);
+        mCartImageView = (ImageView) mView.findViewById(R.id.cartImageView);
 
         Picasso.with(mContext)
                 .load(cart.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
-                .into(cartImageView);
+                .into(mCartImageView);
 
         nameTextView.setText(cart.getName());
         categoryTextView.setText(cart.getCategories().get(0));
-        ratingTextView.setText("Rating: " + cart.getRating() + "/5");
-        notesTextView.setText(cart.getNotes());
+        ratingTextView.setText(R.string.rating_label_string + "" + cart.getRating() + R.string.rating_scale_string);
 
     }
 
@@ -85,5 +89,21 @@ public class FirebaseCartViewHolder extends RecyclerView.ViewHolder implements V
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    public void onItemSelected() {
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
+    }
+
+    @Override
+    public void onItemClear() {
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
     }
 }

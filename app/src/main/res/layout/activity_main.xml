@@ -6,50 +6,40 @@
     tools:context=".ui.MainActivity"
     android:background="@color/colorPrimaryDark">
 
-    <TextView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Track your favorite food carts!"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textView"
-        android:textSize="40sp"
-        android:textAlignment="center" />
+        android:src="@drawable/chowster.png"/>
 
-
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quadSelectSpinner"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Saved Carts"
+        android:text="@string/saved_carts_string"
         android:id="@+id/savedCartsButton"
-        android:background="@color/colorAccent"
+        android:background="@drawable/round_button"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="30dp"/>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Carts"
+        android:text="@string/search_carts_string"
         android:id="@+id/showCartsButton"
-        android:background="@color/colorAccent"
+        android:background="@drawable/round_button"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_above="@id/savedCartsButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="30dp"
         />
 
 </RelativeLayout>
