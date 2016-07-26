@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="User Notes: "
-                    android:drawablePadding="4dp"
+                    android:paddingLeft="10dp"
                     android:id="@+id/notesTextViewLabel"
                     android:labelFor="@+id/notesTextView"
                     android:textColor="@color/colorTextIcons"
@@ -128,7 +128,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="4dp"
+                    android:paddingLeft="10dp"
                     android:id="@+id/notesTextView"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"

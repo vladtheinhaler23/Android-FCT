@@ -72,6 +72,30 @@
                     android:textStyle="bold"
                     android:gravity="center_vertical"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Notes: "
+                    android:paddingLeft="10dp"
+                    android:id="@+id/notesTextViewLabel"
+                    android:labelFor="@+id/notesTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/notesTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -124,30 +148,9 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"/>
 
-            </RelativeLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Notes: "
-                android:drawablePadding="4dp"
-                android:id="@+id/notesTextViewLabel"
-                android:labelFor="@+id/notesTextView"
-                android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="4dp"
-                android:id="@+id/notesTextView"
-                android:textColor="@color/colorTextIcons"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:gravity="center_vertical"/>
+            </RelativeLayout>
+
 
         </LinearLayout>
 
